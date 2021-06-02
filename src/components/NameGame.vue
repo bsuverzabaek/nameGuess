@@ -1,9 +1,9 @@
 <template>
-	<form @submit.prevent="addName">
+	<form @submit.prevent="addName" id="formStyle">
 		<input
 			v-model.trim.lazy="newName" 
 			placeholder="Input Name Here"
-			ref="newNameRef"
+			type="text"
 		/>
 
 		<button type="submit">
@@ -38,17 +38,12 @@
 
 		setup(){
 			const newName = ref("");
-			const newNameRef = ref("");
 			const isLoading = ref(false);
 
 			const state = reactive({
 				info: [],
 				info2: [],
 				info3: [],
-			});
-			
-			onMounted(() => {
-				newNameRef.value.focus();
 			});
 
 			const mainName = computed({
@@ -100,7 +95,43 @@
 			provide('array2',state.info2);
 			provide('array3',state.info3);
 
-			return { state, newName, newNameRef, addName, isLoading, mainName };
+			return { state, newName, addName, isLoading, mainName };
 		},
 	};
 </script>
+
+<style>
+	body{
+		background-color: #BDB76B;
+	}
+
+	#formStyle{
+		margin-top: 10px;
+	}
+
+	input[type=text]{
+		padding: 6px 10px;
+		box-sizing: border-box;
+		border: 3px solid #ccc;
+		border-radius: 12px;
+	}
+
+	input[type=text]:focus{
+		border: 3px solid #555;
+		outline: none;
+	}
+
+	button{
+		background-color: white;
+		color: black;
+		border: 3px solid #555555;
+		border-radius: 12px;
+		margin-left: 5px;
+		padding: 6px 10px;
+	}
+
+	button:hover{
+		background-color: #555555;
+		color: white;
+	}
+</style>
