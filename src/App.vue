@@ -1,16 +1,16 @@
 <template>
-	<Header />
-
 	<div>
-		<NameGame />
+		<router-link to="/">English</router-link> |
+		<router-link to="/jp">日本語</router-link>
 	</div>
+
+	<router-view />
 </template>
 
 <script>
-	import Header from "./components/Header";
-	import NameGame from "./components/NameGame";
 
-	export default {
-		components: { Header, NameGame },
-	};
 </script>
+
+<style>
+	
+</style>
